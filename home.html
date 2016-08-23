@@ -5,11 +5,8 @@
     <title>Sistema imobiliario</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./css/bootstrap.css" rel="stylesheet" />
+	<link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	<link href="./css/estilo.css" rel="stylesheet">
-	
-    <script src="./js/jquery-1.11.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -115,7 +112,7 @@
                 </div>
                 <div class="modal-body">
 					<input type="text" placeholder="Titulo" name="titulo">
-					<input type="text" placeholder="dd/mm/aaaa" name="data">
+					<input type="text" placeholder="dd/mm/aaaa" name="dataAdicionarTarefa" id="dataAdicionarTarefa" />
 					<textarea name="descricao" placeholder="Descrição"></textarea>
 				</div>
                 <div class="modal-footer">
@@ -128,62 +125,77 @@
     </div>
 
 </body>
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-   $('[data-toggle="offcanvas"]').click(function(){
-       $("#navigation").toggleClass("hidden-xs");
-   });
-});
+	$(document).ready(function(){
+	   $('[data-toggle="offcanvas"]').click(function(){
+		   $("#navigation").toggleClass("hidden-xs");
+	   });
+	});
 
-  // Load the Visualization API and the corechart package.
-  google.charts.load('current', {'packages':['corechart']});
+	// Load the Visualization API and the corechart package.
+	google.charts.load('current', {'packages':['corechart']});
 
-  // Set a callback to run when the Google Visualization API is loaded.
-  google.charts.setOnLoadCallback(drawChart);
+	// Set a callback to run when the Google Visualization API is loaded.
+	google.charts.setOnLoadCallback(drawChart);
 
-  // Callback that creates and populates a data table,
-  // instantiates the pie chart, passes in the data and
-  // draws it.
-  function drawChart() {
+	// Callback that creates and populates a data table,
+	// instantiates the pie chart, passes in the data and
+	// draws it.
+	function drawChart() {
 
-	// Create the data table.
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Topping');
-	data.addColumn('number', 'Slices');
-	data.addRows([
-	  ['Casa', 3],
-	  ['Apartamento', 1],
-	  ['Terreno', 1],
-	  ['Galpão', 2]
-	]);
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Topping');
+		data.addColumn('number', 'Slices');
+		data.addRows([
+			['Casa', 3],
+			['Apartamento', 1],
+			['Terreno', 1],
+			['Galpão', 2]
+		]);
 
-	// Set chart options
-	var options = {'title':'Quantidade de imóveis por tipo',
-				   'width':400,
-				   'height':300};
+		// Set chart options
+		var options = {'title':'Quantidade de imóveis por tipo', 'width':400, 'height':300};
 
-	// Instantiate and draw our chart, passing in some options.
-	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-	chart.draw(data, options); 
-  
-      var data = google.visualization.arrayToDataTable([
-        ['Mês', 'Total'],
-        ['Julho', 8],
-        ['Agosto', 10],
-        ['Setembro', 19],
-        ['Outubro', 20],
-		['Novembro', 3]
-      ]);
-      var options = {
-        title: "Quantidade de imóveis vendidos por mês",
-        width: 600,
-        height: 400,
-        bar: {groupWidth: '95%'},
-        legend: { position: 'none' },
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_plain'));
-      chart.draw(data, options);
-  }
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		chart.draw(data, options); 
+
+		var data = google.visualization.arrayToDataTable([
+			['Mês', 'Total'],
+			['Julho', 8],
+			['Agosto', 10],
+			['Setembro', 19],
+			['Outubro', 20],
+			['Novembro', 3]
+		]);
+		var options = {
+			title: "Quantidade de imóveis vendidos por mês",
+			width: 600,
+			height: 400,
+			bar: {groupWidth: '95%'},
+			legend: { position: 'none' },
+		};
+		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_plain'));
+		chart.draw(data, options);
+	}
+	
+	//Adicionar data
+	$('#dataAdicionarTarefa').datetimepicker({
+		language: "pt-BR",
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
   
 </script>
 </body>
