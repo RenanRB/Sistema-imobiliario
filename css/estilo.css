@@ -1204,3 +1204,29 @@ span.round-tab:hover {
         left: 35%;
     }
 }
+
+
+}
+/*CADASTRO*/
+.menuTabs {
+	background-color: red;
+}
+
+.tab {
+    text-align: center;
+	margin-left: 0px !important;
+}
+
+.formulario-imoveis {
+	border: solid 1px;
+    border-radius: 5px;
+}
+
+#btnProximo {
+	float: right;
+	margin-left: 20px;
+}
+
+#btnAnterior {
+	float: right;
+}
