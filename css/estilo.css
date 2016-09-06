@@ -1215,11 +1215,28 @@ span.round-tab:hover {
 .tab {
     text-align: center;
 	margin-left: 0px !important;
+	cursor: pointer;
 }
 
 .formulario-imoveis {
-	border: solid 1px;
-    border-radius: 5px;
+	border-radius: 5px;
+	background-color: #428BCA;
+	color: white;
+	margin: -6px 15px;
+	padding-top: 20px;
+	margin-left: 15px;
+}
+
+.oculto {
+	display: none;
+}
+
+.visivel {
+	display: block;
+}
+
+#btnRodape {
+	padding: 14px;
 }
 
 #btnProximo {
@@ -1229,4 +1246,21 @@ span.round-tab:hover {
 
 #btnAnterior {
 	float: right;
+	display: none;
+}
+
+#menu li ul, #menu li:hover ul ul{
+	display:none;
+	top:0;
+	left:149px;
+}
+ 
+#menu li:hover ul,
+#menu ul li:hover ul{
+display:block;
+}
+
+.label-busca {
+	text-align: right;
+	padding-top: 8px;
 }

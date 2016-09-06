@@ -20,16 +20,11 @@
                     </a>
                 </div>
                 <div class="navi">
-                    <ul id="menu">
+                    <ul>
                         <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="busca.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
                         <li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>
-                        <li class="active has-sub open"><a href="./cadastro.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a>
-							<ul>
-								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Casa</span></a></li>
-								<li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Apartamento</span></a></li>
-							</ul>
-						</li>
+                        <li><a href="./cadastro.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a></li>
                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
                         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>
                     </ul>
@@ -39,7 +34,7 @@
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
                 <div class="row">
                     <header>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <nav class="navbar-default pull-left">
                                 <div class="navbar-header">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
@@ -54,7 +49,7 @@
                                 <input type="text" placeholder="Buscar" id="search">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
                                     <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_tarefa">Adicionar Tarefa</a></li>
@@ -88,108 +83,34 @@
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1>Sistema imobiliario</h1>
+                    <h1>Buscar imóvel</h1>
                     <div class="row">
-                        <!--<div class="col-md-12 menuTabs">
-							<div class="col-md-3 col-xs-12 tab">Info básicas</div>
-							<div class="col-md-3 col-xs-12 tab">Localização</div>
-							<div class="col-md-3 col-xs-12 tab">Características</div>
-							<div class="col-md-3 col-xs-12 tab">Info adicionais</div>
-						</div>-->
-						<ul class="nav nav-pills col-md-12">
-							<li role="presentation" class="active col-md-3 col-xs-12 tab" id="tab1"><a onclick="trocarPagina(1);">Informações básicas</a></li>
-							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab2"><a onclick="trocarPagina(2);">Localização</a></li>
-							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab3"><a onclick="trocarPagina(3);">Características</a></li>
-							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab4"><a onclick="trocarPagina(4);">Informações adicionais</a></li>
-						</ul>
+						<form class="form-horizontal" action="busca_registros.html">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="col-md-4 label-busca">Tipo de imóvel</label>
+									<div class="col-md-4">
+										<select class="form-control input-md">
+											<option value="apartamento">Apartamento</option>
+											<option value="casa">Casa</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 label-busca">Valor</label>
+									<div class="col-md-4">
+										<input type="text" class="form-control input-md" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-5"></div>
+									<div class="col-md-2">
+										<input type="submit" class="form-control " value="Buscar" />
+									</div>
+								</div>
+							</div>
+						</form>
                     </div>
-					<form class="form-horizontal">
-					<div class="row" style="padding-right: 4.3%;">
-						<div class="col-md-12 formulario-imoveis">
-							
-								<fieldset id="pagina1" class="visivel">
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Nome do prédio</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
-									  </div>
-									</div>
-
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Suítes</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="number" placeholder="Quantidade de suítes" class="form-control input-md">
-									  </div>
-									</div>
-
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Quartos</label>  
-									  <div class="col-md-4">
-										<input id="textinput" name="textinput" type="number" placeholder="Quantidade de quartos" class="form-control input-md">
-									  </div>
-									</div>
-
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Área privativa m²</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Área total privativa" class="form-control input-md">
-									  </div>
-									</div>
-									
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Área total m²</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Área total do imóvel" class="form-control input-md">
-									  </div>
-									</div>
-									
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Vagas de garagem</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="number" placeholder="Número de vagas de garagem" class="form-control input-md">
-									  </div>
-									</div>
-
-								</fieldset>
-								<fieldset id="pagina2" class="oculto">
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">CEP</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: 89253-600" class="form-control input-md">
-									  </div>
-									</div>
-
-								</fieldset>
-								<fieldset id="pagina3" class="oculto">
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Características</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
-									  </div>
-									</div>
-
-								</fieldset>
-								<fieldset id="pagina4" class="oculto">
-									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Adicional</label>  
-									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
-									  </div>
-									</div>
-
-								</fieldset>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group" id="btnRodape">
-						  <label class="col-md-4 control-label" for="button1id"></label>
-						  <div class="col-md-8">
-							<button id="btnProximo" name="button2id" class="btn btn-success floatRight" onclick="pagProx();">Próximo</button>
-							<button id="btnAnterior" name="button1id" class="btn btn-primary floatRight" onclick="pagAnt();">Anterior</button>
-						  </div>
-						</div>
-					</div>
-					</form>
                 </div>
             </div>
         </div>
@@ -225,6 +146,7 @@
 </body>
 <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
 <script type="text/javascript">
@@ -233,6 +155,54 @@
 		   $("#navigation").toggleClass("hidden-xs");
 	   });
 	});
+
+	// Load the Visualization API and the corechart package.
+	google.charts.load('current', {'packages':['corechart']});
+
+	// Set a callback to run when the Google Visualization API is loaded.
+	google.charts.setOnLoadCallback(drawChart);
+
+	// Callback that creates and populates a data table,
+	// instantiates the pie chart, passes in the data and
+	// draws it.
+	function drawChart() {
+
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Topping');
+		data.addColumn('number', 'Slices');
+		data.addRows([
+			['Casa', 3],
+			['Apartamento', 1],
+			['Terreno', 1],
+			['Galpão', 2]
+		]);
+
+		// Set chart options
+		var options = {'title':'Quantidade de imóveis por tipo', 'width':400, 'height':300};
+
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		chart.draw(data, options); 
+
+		var data = google.visualization.arrayToDataTable([
+			['Mês', 'Total'],
+			['Julho', 8],
+			['Agosto', 10],
+			['Setembro', 19],
+			['Outubro', 20],
+			['Novembro', 3]
+		]);
+		var options = {
+			title: "Quantidade de imóveis vendidos por mês",
+			width: 600,
+			height: 400,
+			bar: {groupWidth: '95%'},
+			legend: { position: 'none' },
+		};
+		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_plain'));
+		chart.draw(data, options);
+	}
 	
 	//Adicionar data
 	$('#dataAdicionarTarefa').datetimepicker({
@@ -245,45 +215,7 @@
 		minView: 2,
 		forceParse: 0
     });
-	
-	var paginaAtual = 1;
-	
-	function trocarPagina(nrPagina) {
-		$('#pagina' + paginaAtual).toggleClass('oculto visivel');
-		$('#pagina' + nrPagina).toggleClass('oculto visivel');
-		$('#tab' + paginaAtual).toggleClass('active');
-		$('#tab' + nrPagina).toggleClass('active');
-		paginaAtual = nrPagina;
-		validaBotao();
-	}
-	
-	function pagProx() {
-		if (paginaAtual < 4) {
-			var proxima = paginaAtual + 1;
-			trocarPagina(proxima);
-		}
-	}
-	
-	function pagAnt() {
-		if (paginaAtual > 1) {
-			var anterior = paginaAtual - 1;
-			trocarPagina(anterior);
-		}
-	}
-	
-	function validaBotao() {
-		if (paginaAtual == 4) {
-			$('#btnProximo').html("Finalizar");
-		} else {
-			$('#btnProximo').html("Próximo");
-		}
-		
-		if (paginaAtual == 1) {
-			$('#btnAnterior').css("display", "none");
-		} else {
-			$('#btnAnterior').css("display", "block");
-		}
-	}
+  
 </script>
 </body>
 </html>

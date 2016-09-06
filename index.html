@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <title>Sistema imobiliario</title>
+    <head>
+        <meta charset="utf-8">
+        <title>Sistema imobiliario</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./css/bootstrap.css" rel="stylesheet">
-    <link href="./css/estilo.css" rel="stylesheet">
-    <script src="./js/jquery-1.11.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="./img/perfil.jpg" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Me lembre
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
-            </form>
-            <a href="#" class="forgot-password">
-                Esqueceu sua senha?
-            </a>
+        <link href="./css/bootstrap.css" rel="stylesheet">
+        <link href="./css/estilo.css" rel="stylesheet">
+        <script src="./js/jquery-1.11.1.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card card-container">
+                <img id="profile-img" class="profile-img-card" src="./img/perfil.jpg"/>
+                <p id="profile-name" class="profile-name-card"></p>
+                <form class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+                    <div id="remember" class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Me lembre
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+                </form>
+                <a href="#" class="forgot-password">
+                    Esqueceu sua senha?
+                </a>
+            </div>
         </div>
-    </div>
-<script type="text/javascript">
-	$( document ).ready(function() {
-		//testLocalStorageData();
-		//limparLocalStorageData();
-		loadProfile();
-	});
-	
-	function getLocalProfile(callback){
-		var profileImgSrc      = localStorage.getItem("PROFILE_IMG_SRC");
-		var profileName        = localStorage.getItem("PROFILE_NAME");
-		var profileReAuthEmail = localStorage.getItem("PROFILE_REAUTH_EMAIL");
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //testeLocalStorageData();
+                limparLocalStorageData();
+                loadProfile();
+            });
 
-		if(profileName !== null
-				&& profileReAuthEmail !== null
-				&& profileImgSrc !== null) {
-			callback(profileImgSrc, profileName, profileReAuthEmail);
-		}
-	}
+            function getLocalProfile(callback) {
+                var profileImgSrc = localStorage.getItem("PROFILE_IMG_SRC");
+                var profileName = localStorage.getItem("PROFILE_NAME");
+                var profileReAuthEmail = localStorage.getItem("PROFILE_REAUTH_EMAIL");
 
-	function loadProfile() {
-		if(!supportsHTML5Storage()) { return false; }
-		getLocalProfile(function(profileImgSrc, profileName, profileReAuthEmail) {
-			$("#profile-img").attr("src",profileImgSrc);
-			$("#profile-name").html(profileName);
-			$("#reauth-email").html(profileReAuthEmail);
-			$("#inputEmail").hide();
-			$("#remember").hide();
-		});
-	}
+                if (profileName !== null
+                        && profileReAuthEmail !== null
+                        && profileImgSrc !== null) {
+                    callback(profileImgSrc, profileName, profileReAuthEmail);
+                }
+            }
 
-	function supportsHTML5Storage() {
-		try {
-			return 'localStorage' in window && window['localStorage'] !== null;
-		} catch (e) {
-			return false;
-		}
-	}
+            function loadProfile() {
+                if (!supportsHTML5Storage()) {
+                    return false;
+                }
+                getLocalProfile(function (profileImgSrc, profileName, profileReAuthEmail) {
+                    $("#profile-img").attr("src", profileImgSrc);
+                    $("#profile-name").html(profileName);
+                    $("#reauth-email").html(profileReAuthEmail);
+                    $("#inputEmail").hide();
+                    $("#remember").hide();
+                });
+            }
 
-	function testeLocalStorageData() {
-		if(!supportsHTML5Storage()) { return false; }
-		localStorage.setItem("PROFILE_IMG_SRC", "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" );
-		localStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
-		localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
-	}
+            function supportsHTML5Storage() {
+                try {
+                    return 'localStorage' in window && window['localStorage'] !== null;
+                } catch (e) {
+                    return false;
+                }
+            }
 
-	function limparLocalStorageData() {
-		localStorage.clear();
-		// ou para remover algum especifico
-		function cleanLocalStorage() {
-			for(key in localStorage) {
-				delete localStorage[key];
-			}
-		}
-	}
-</script>
-</body>
+            function testeLocalStorageData() {
+                if (!supportsHTML5Storage()) {
+                    return false;
+                }
+                localStorage.setItem("PROFILE_IMG_SRC", "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120");
+                localStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
+                localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
+            }
+
+            function limparLocalStorageData() {
+                localStorage.clear();
+                // ou para remover algum especifico
+                function cleanLocalStorage() {
+                    for (key in localStorage) {
+                        delete localStorage[key];
+                    }
+                }
+            }
+        </script>
+    </body>
 </html>
