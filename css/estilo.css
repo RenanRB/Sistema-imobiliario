@@ -1264,3 +1264,9 @@ display:block;
 	text-align: right;
 	padding-top: 8px;
 }
+
+.box-imovel-busca {
+	background-color: white;
+	border-radius: 3px;
+	height: 100px;
+}

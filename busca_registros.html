@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema imobiliario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/bootstrap.css" rel="stylesheet" />
+	<link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link href="./css/estilo.css" rel="stylesheet">
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="home.html"><img src="./img/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="./img/circulo-logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
+                        <li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>
+                        <li><a href="./cadastro.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a></li>
+                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="search hidden-xs hidden-sm">
+                                <input type="text" placeholder="Buscar" id="search">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_tarefa">Adicionar Tarefa</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="./img/perfil.jpg" alt="user">
+                                            <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <span>Renan Rafael Bertoldo</span>
+                                                    <p class="text-muted small">
+                                                        renan8r@gmail.com
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="./profile.html" class="view btn-sm active">Ver Perfil</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>Buscar imóvel</h1>
+                    <div class="row box-imovel-busca">
+						<div class="informacoes-busca col-md-9">
+							<div class="img-busca">
+								<img src="./img/logo.jpg" />
+							</div>
+						</div>
+						<div class="informacoes-busca col-md-3">
+						teste2
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+    <div id="add_tarefa" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Adicionar Tarefa</h4>
+                </div>
+                <div class="modal-body">
+					<input type="text" placeholder="Titulo" name="titulo">
+					<input type="text" placeholder="dd/mm/aaaa" name="dataAdicionarTarefa" id="dataAdicionarTarefa" />
+					<textarea name="descricao" placeholder="Descrição"></textarea>
+				</div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="add-project" data-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	   $('[data-toggle="offcanvas"]').click(function(){
+		   $("#navigation").toggleClass("hidden-xs");
+	   });
+	});
+
+	// Load the Visualization API and the corechart package.
+	google.charts.load('current', {'packages':['corechart']});
+
+	// Set a callback to run when the Google Visualization API is loaded.
+	google.charts.setOnLoadCallback(drawChart);
+
+	// Callback that creates and populates a data table,
+	// instantiates the pie chart, passes in the data and
+	// draws it.
+	function drawChart() {
+
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Topping');
+		data.addColumn('number', 'Slices');
+		data.addRows([
+			['Casa', 3],
+			['Apartamento', 1],
+			['Terreno', 1],
+			['Galpão', 2]
+		]);
+
+		// Set chart options
+		var options = {'title':'Quantidade de imóveis por tipo', 'width':400, 'height':300};
+
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		chart.draw(data, options); 
+
+		var data = google.visualization.arrayToDataTable([
+			['Mês', 'Total'],
+			['Julho', 8],
+			['Agosto', 10],
+			['Setembro', 19],
+			['Outubro', 20],
+			['Novembro', 3]
+		]);
+		var options = {
+			title: "Quantidade de imóveis vendidos por mês",
+			width: 600,
+			height: 400,
+			bar: {groupWidth: '95%'},
+			legend: { position: 'none' },
+		};
+		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_plain'));
+		chart.draw(data, options);
+	}
+	
+	//Adicionar data
+	$('#dataAdicionarTarefa').datetimepicker({
+		language: "pt-BR",
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+  
+</script>
+</body>
+</html>
