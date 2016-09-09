@@ -1266,7 +1266,24 @@ display:block;
 }
 
 .box-imovel-busca {
-	background-color: white;
+	background-color: #dadada;
 	border-radius: 3px;
-	height: 100px;
+	height: 120px;
+	padding: 10px;
+}
+
+.img-busca {
+	width: 100px;
+	max-height: 100px;
+	float: left;
+}
+
+.btn-busca {
+	float:right;
+	width: 100%;
+}
+
+.info-imovel-busca {
+	float: left;
+	margin-left: 10px;
 }
