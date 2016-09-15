@@ -85,20 +85,70 @@
                 <div class="user-dashboard">
                     <h1>Buscar imóvel</h1>
                     <div class="row box-imovel-busca col-md-12">
-						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-9">
-							<div class="img-busca col-sm-3">
+						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
+							<center><div class="img-busca col-sm-3 col-xs-12">
 								<img class="img-busca" src="./img/logo.jpg" />
-							</div>
-							<div class="info-imovel-busca col-sm-9">
+							</div></center>
+							<div class="info-imovel-busca col-sm-9 col-xs-12">
 								<p>Informações</p>
 								<p>Informações</p>
 								<p>Informações</p>
 							</div>
 						</div>
-						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-3">
+						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
 						
 							<button type="button" class="btn-busca">Editar</button>
-							<button type="button" class="btn-busca">Excluir</button>
+							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
+						</div>
+                    </div>
+					<div class="row box-imovel-busca col-md-12">
+						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
+							<div class="img-busca col-sm-3 col-xs-12">
+								<img class="img-busca" src="./img/logo.jpg" />
+							</div>
+							<div class="info-imovel-busca col-sm-9 col-xs-12">
+								<p>Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações Informações Informações 
+								Informações Informações </p>
+							</div>
+						</div>
+						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
+						
+							<button type="button" class="btn-busca">Editar</button>
+							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
+						</div>
+                    </div>
+					<div class="row box-imovel-busca col-md-12">
+						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
+							<div class="img-busca col-sm-3 col-xs-12">
+								<img class="img-busca" src="./img/logo.jpg" />
+							</div>
+							<div class="info-imovel-busca col-sm-9 col-xs-12">
+								<p>Informações</p>
+								<p>Informações</p>
+								<p>Informações</p>
+							</div>
+						</div>
+						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
+						
+							<button type="button" class="btn-busca">Editar</button>
+							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
 						</div>
                     </div>
                 </div>
@@ -128,6 +178,26 @@
                     <button type="button" class="cancel" data-dismiss="modal">Fechar</button>
                     <button type="button" class="add-project" data-dismiss="modal">Salvar</button>
                 </div>
+            </div>
+
+        </div>
+    </div>
+	
+	<!-- Modal -->
+    <div id="excluir_imovel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Remover imóvel</h4>
+                </div>
+                <div class="modal-body">
+					<h3 class="centralizar-texto">Tem certeza que deseja remover este imóvel?</h3>
+				</div>
+                <div class="modal-footer">
+					<button type="button" class="cancel" data-dismiss="modal">Não</button>
+                    <button type="button" class="add-project" data-dismiss="modal">Sim</button>
+				</div>
             </div>
 
         </div>

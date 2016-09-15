@@ -1265,11 +1265,17 @@ display:block;
 	padding-top: 8px;
 }
 
+.centralizar-texto {
+	text-align: center;
+}
+
 .box-imovel-busca {
 	background-color: #dadada;
 	border-radius: 3px;
-	height: 120px;
+	min-height: 120px;
 	padding: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
 .img-busca {
