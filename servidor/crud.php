@@ -1,4 +1,6 @@
 <?php
+require_once("autenticador.php");
+
 if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	$idUsuario = $_GET['id_usuario'];
 	
@@ -55,6 +57,55 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 								'email' => $_POST['email'],
 								'dt_nascimento' => $_POST['dtNascimento'],
 								'senha' => $_POST['senha']));
+	$response['usuarios'] = $usuarios;
+	
+	$fp = fopen('../dados/usuarios.json', 'w');
+	fwrite($fp, json_encode($response));
+	fclose($fp);
+} elseif (isset($_POST['acao']) && $_POST['acao'] == 'login') {
+	$getfile = file_get_contents('../dados/usuarios.json');
+	$jsonfile = json_decode($getfile, true);
+	$usuarios = $jsonfile['usuarios'];
+	
+	foreach ( $usuarios as $chave => $e ) {
+		if ($e['email'] == $_POST['email']) {
+			if ($e['senha'] == $_POST['senha']) {
+				session_start();
+				$_SESSION['id'] = $chave;
+				$_SESSION['nome'] = $e['nome'];
+				$_SESSION['email'] = $e['email'];
+				echo "ok";
+			} else {
+				echo "senhaInvalida";
+			}
+		}
+	}
+} elseif (isset($_POST['acao']) && $_POST['acao'] == 'cadastrarImovel') {
+	$getfile = file_get_contents('../dados/usuarios.json');
+	$jsonfile = json_decode($getfile, true);
+	
+	$usuarios = $jsonfile['usuarios'];
+	$usuario = $usuarios[$_SESSION['id']];
+	
+	if (!isset($usuario['imoveis'])) {
+		$usuario['imoveis'] = Array();
+	}
+	
+	array_push($usuario['imoveis'], Array('nome' => $_POST['nome'],
+								'suites' => $_POST['suites'],
+								'quartos' => $_POST['quartos'],
+								'area_privativa' => $_POST['area_privativa'],
+								'area_total' => $_POST['area_total'],
+								'cep' => $_POST['cep'],
+								'estado' => $_POST['estado'],
+								'cidade' => $_POST['cidade'],
+								'bairro' => $_POST['bairro'],
+								'rua' => $_POST['rua'],
+								'numero' => $_POST['numero'],
+								'caracteristicas' => $_POST['caracteristicas'],
+								'informacoes_adicionais' => $_POST['informacoes_adicionais']));
+								
+	$usuarios[$_SESSION['id']] = $usuario;
 	$response['usuarios'] = $usuarios;
 	
 	$fp = fopen('../dados/usuarios.json', 'w');

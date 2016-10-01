@@ -103,7 +103,7 @@
 							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab4"><a onclick="trocarPagina(4);">Informações adicionais</a></li>
 						</ul>
                     </div>
-					<form class="form-horizontal">
+					<form class="form-horizontal" id="formImovel">
 					<div class="row" style="padding-right: 4.3%;">
 						<div class="col-md-12 formulario-imoveis">
 							
@@ -111,42 +111,42 @@
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Nome do prédio</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
+									  <input id="nome" name="nome " type="text" placeholder="Exemplo: São João" class="form-control input-md">
 									  </div>
 									</div>
 
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Suítes</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="number" placeholder="Quantidade de suítes" class="form-control input-md">
+									  <input id="suites" name="suites" type="number" placeholder="Quantidade de suítes" class="form-control input-md">
 									  </div>
 									</div>
 
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Quartos</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="number" placeholder="Quantidade de quartos" class="form-control input-md">
+									  <input id="quartos" name="quartos" type="number" placeholder="Quantidade de quartos" class="form-control input-md">
 									  </div>
 									</div>
 
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Área privativa m²</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Área total privativa" class="form-control input-md">
+									  <input id="area_privativa" name="area_privativa" type="text" placeholder="Área total privativa" class="form-control input-md">
 									  </div>
 									</div>
 									
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Área total m²</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Área total do imóvel" class="form-control input-md">
+									  <input id="area_total" name="area_total" type="text" placeholder="Área total do imóvel" class="form-control input-md">
 									  </div>
 									</div>
 									
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Vagas de garagem</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="number" placeholder="Número de vagas de garagem" class="form-control input-md">
+									  <input id="vaga_garagem" name="vaga_garagem" type="number" placeholder="Número de vagas de garagem" class="form-control input-md">
 									  </div>
 									</div>
 
@@ -155,7 +155,37 @@
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">CEP</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: 89253-600" class="form-control input-md">
+									  <input id="cep" name="cep" type="text" placeholder="Exemplo: 89253-600" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Estado</label>  
+									  <div class="col-md-4">
+									  <input id="estado" name="estado" type="text" placeholder="Exemplo: Santa Catarina" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Cidade</label>  
+									  <div class="col-md-4">
+									  <input id="cidade" name="cidade" type="text" placeholder="Exemplo: Blumenau" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
+									  <div class="col-md-4">
+									  <input id="bairro" name="bairro" type="text" placeholder="Exemplo: Vila Nova" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Rua</label>  
+									  <div class="col-md-4">
+									  <input id="rua" name="rua" type="text" placeholder="Exemplo: Theodoro Hultrup" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Número</label>  
+									  <div class="col-md-4">
+									  <input id="numero" name="numero" type="number" placeholder="Numero do imóvel" class="form-control input-md">
 									  </div>
 									</div>
 
@@ -164,16 +194,16 @@
 									<div class="form-group">
 									  <label class="col-md-4 control-label" for="textinput">Características</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
+									  <textarea id="caracteristicas" name="caracteristicas" type="text" placeholder="Exemplo: Pé duplo, sacada" class="form-control input-md"></textarea>
 									  </div>
 									</div>
 
 								</fieldset>
 								<fieldset id="pagina4" class="oculto">
 									<div class="form-group">
-									  <label class="col-md-4 control-label" for="textinput">Adicional</label>  
+									  <label class="col-md-4 control-label" for="textinput">Informações Adicionais</label>  
 									  <div class="col-md-4">
-									  <input id="textinput" name="textinput" type="text" placeholder="Exemplo: São João" class="form-control input-md">
+									  <textarea id="informacoes_adicionais" name="informacoes_adicionais" placeholder="Exemplo: Aceita permuta" class="form-control input-md"></textarea>
 									  </div>
 									</div>
 
@@ -274,8 +304,10 @@
 	function validaBotao() {
 		if (paginaAtual == 4) {
 			$('#btnProximo').html("Finalizar");
+			$("#btnProximo").attr("onclick","cadastrarImovel();");
 		} else {
 			$('#btnProximo').html("Próximo");
+			$("#btnProximo").attr("onclick","pagProx();");
 		}
 		
 		if (paginaAtual == 1) {
@@ -283,6 +315,36 @@
 		} else {
 			$('#btnAnterior').css("display", "block");
 		}
+	}
+	
+	function cadastrarImovel() {
+		var dados = {
+			'nome': $("#nome").val(),
+			'suites': $("#suites").val(),
+			'quartos': $("#quartos").val(),
+			'area_privativa': $("#area_privativa").val(),
+			'area_total': $("#area_total").val(),
+			'cep': $("#cep").val(),
+			'estado': $("#estado").val(),
+			'cidade': $("#cidade").val(),
+			'bairro': $("#bairro").val(),
+			'rua': $("#rua").val(),
+			'numero': $("#numero").val(),
+			'caracteristicas': $("#caracteristicas").val(),
+			'informacoes_adicionais': $("#informacoes_adicionais").val(),
+			'acao':'cadastrarImovel'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				$('#formImovel')[0].reset();
+				alert("Imovel cadastrado com sucesso!");
+			}
+		});
 	}
 </script>
 </body>
