@@ -83,20 +83,168 @@
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1>Sistema imobiliario</h1>
-                    <div class="row" style="background-color: red;margin: 0 auto;">
+                    <h1>Usuários</h1>
+                    <div class="row">
 						<div class="btn-group btn-group-justified" role="group" aria-label="...">
 						  <div class="btn-group" role="group">
-							<button type="button" class="btn btn-default">Cadastrar</button>
+							<button type="button" class="btn btn-default" onclick="alterarAcaoUsuario('cadastrar');">Cadastrar</button>
 						  </div>
 						  <div class="btn-group" role="group">
-							<button type="button" class="btn btn-default">Editar</button>
+							<button type="button" class="btn btn-default" onclick="alterarAcaoUsuario('editar');">Editar</button>
 						  </div>
 						  <div class="btn-group" role="group">
-							<button type="button" class="btn btn-default">Excluir</button>
+							<button type="button" class="btn btn-default" onclick="alterarAcaoUsuario('excluir');">Excluir</button>
 						  </div>
 						</div>
                     </div>
+					
+					<div class="row row-usuario" id="cadastrar_usuario" style="display:none;">
+						<form class="form-horizontal form-usuario" id="formCadastro">
+							<fieldset>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="nome">Nome</label>  
+							  <div class="col-md-4">
+							  <input id="nome_cadastrar" name="nome_cadastrar" type="text" placeholder="Digite seu nome" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="email">E-mail</label>  
+							  <div class="col-md-4">
+							  <input id="email_cadastrar" name="email_cadastrar" type="email" placeholder="Digite seu e-mail" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>  
+							  <div class="col-md-4">
+							  <input id="dt_nascimento_cadastrar" name="dt_nascimento_cadastrar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="senha">Senha</label>
+							  <div class="col-md-4">
+								<input id="senha_cadastrar" name="senha_cadastrar" type="password" placeholder="Digite sua senha" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="resenha">Confirmar senha</label>
+							  <div class="col-md-4">
+								<input id="resenha_cadastrar" name="resenha_cadastrar" type="password" placeholder="Digite novamente sua senha" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="button1id"></label>
+							  <div class="col-md-8">
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+								<button type="button" class="btn btn-success" onclick="salvarRegistro();">Salvar</button>
+							  </div>
+							</div>
+							
+							</fieldset>
+						</form>
+
+					</div>
+					<div class="row row-usuario" id="editar_usuario" style="display:none;" >
+						<form class="form-horizontal form-usuario"  id="formEditar">
+							<fieldset>
+							
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="nome">Usuário para edição</label>  
+							  <div class="col-md-4">
+							  <select class="form-control" id="select_editar_usuarios" name="select_editar_usuarios" onchange="buscarDadosUsuario(this.value);">
+								<option>Aguardando dados</option>
+							  </select>
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="nome">Nome</label>  
+							  <div class="col-md-4">
+							  <input id="nome_editar" name="nome_editar" type="text" placeholder="Digite seu nome" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="email">E-mail</label>  
+							  <div class="col-md-4">
+							  <input id="email_editar" name="email_editar" type="email" placeholder="Digite seu e-mail" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>  
+							  <div class="col-md-4">
+							  <input id="dt_nascimento_editar" name="dt_nascimento_editar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="senha">Senha</label>
+							  <div class="col-md-4">
+								<input id="senha_editar" name="senha_editar" type="password" placeholder="Digite sua senha" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="resenha">Confirmar senha</label>
+							  <div class="col-md-4">
+								<input id="resenha_editar" name="resenha_editar" type="password" placeholder="Digite novamente sua senha" class="form-control input-md" required="">
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="button1id"></label>
+							  <div class="col-md-8">
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+								<button type="button" class="btn btn-success" onclick="salvarEditar();">Salvar</button>
+							  </div>
+							</div>
+							
+							</fieldset>
+						</form>
+
+					</div>
+					<div class="row row-usuario" id="excluir_usuario" style="display:none;" >
+						<form class="form-horizontal form-usuario"  id="formExcluir">
+							<fieldset>
+							
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="nome">Usuário para exclusão</label>  
+							  <div class="col-md-4">
+							  <select class="form-control" id="select_excluir_usuarios" name="select_excluir_usuarios" onchange="buscarDadosUsuario(this.value);">
+								<option>Aguardando dados</option>
+							  </select>
+								
+							  </div>
+							</div>
+
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="button1id"></label>
+							  <div class="col-md-8">
+								<button type="button" class="btn btn-danger" onclick="excluirUsuario(select_excluir_usuarios.value);">Deletar</button>
+							  </div>
+							</div>
+							
+							</fieldset>
+						</form>
+
+					</div>
                 </div>
             </div>
         </div>
@@ -148,6 +296,102 @@
 		minView: 2,
 		forceParse: 0
     });
+	
+	function alterarAcaoUsuario(acao) {
+		document.getElementById("cadastrar_usuario").style.display = "none";
+		document.getElementById("editar_usuario").style.display = "none";
+		document.getElementById("excluir_usuario").style.display = "none";
+		
+		document.getElementById(acao + "_usuario").style.display = "block";
+		
+		if (acao == 'editar' || acao == 'excluir') {
+			$.ajax({
+				url: './servidor/crud.php',
+				data: 'acao=listar',
+				type: 'get',
+				dataType: 'json',
+				success: function(dados) {
+					var options = "<option>Selecione</option> ";
+					for (var i = 0; i < dados.length; i++) {
+						options += "<option value='" + dados[i].chave + "'>" + dados[i].nome + "</option> ";
+					}
+					$("#select_" + acao +"_usuarios").html(options);
+				}
+			});
+		}
+	}
+	
+	function buscarDadosUsuario(idUsuario) {
+		$.ajax({
+			url: './servidor/crud.php',
+				data: 'acao=editar&id_usuario=' + idUsuario,
+				type: 'get',
+				dataType: 'json',
+			success: function(dados) {
+				$("#nome_editar").val(dados.nome);
+				$("#email_editar").val(dados.email);
+				$("#dt_nascimento_editar").val(dados.dt_nascimento);
+				$("#senha_editar").val(dados.senha);
+				$("#resenha_editar").val(dados.senha);
+			}
+		});
+	}
+	
+	function salvarEditar(idUsuario) {
+		var dados = {
+			'id': $("#select_editar_usuarios").val(),
+			'nome': $("#nome_editar").val(),
+			'email': $("#email_editar").val(),
+			'dtNascimento': $("#dt_nascimento_editar").val(),
+			'senha': $("#senha_editar").val(),
+			'acao':'alterar'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				$('#formEditar')[0].reset();
+				alert("Usuário editado com sucesso!");
+			}
+		});
+	}
+	
+	function excluirUsuario(idUsuario) {
+		$.ajax({
+			url: './servidor/crud.php',
+			data: {'acao': 'excluir', 'id_usuario': idUsuario},
+			type: 'POST',
+			dadataType: 'text',
+			success: function() {
+				$('#formExcluir')[0].reset();
+				alert("Usuário excluido com sucesso!");
+			}
+		});
+	}
+	
+	function salvarRegistro() {
+		var dados = {
+			'nome': $("#nome_cadastrar").val(),
+			'email': $("#email_cadastrar").val(),
+			'dtNascimento': $("#dt_nascimento_cadastrar").val(),
+			'senha': $("#senha_cadastrar").val(),
+			'acao':'cadastrar'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				$('#formCadastro')[0].reset();
+				alert("Usuário cadastrado com sucesso!");
+			}
+		});
+	}
   
 </script>
 </body>

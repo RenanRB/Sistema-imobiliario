@@ -1293,3 +1293,15 @@ display:block;
 	float: left;
 	margin-left: 10px;
 }
+
+.row-usuario {
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #ccc;
+	border-radius: 5px;
+}
+
+.form-usuario {
+	margin-top: 25px;
+}
