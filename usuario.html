@@ -354,6 +354,7 @@
 			dataType: 'text',
 			success: function() {
 				$('#formEditar')[0].reset();
+				alterarAcaoUsuario('editar');
 				alert("Usuário editado com sucesso!");
 			}
 		});
@@ -367,6 +368,7 @@
 			dadataType: 'text',
 			success: function() {
 				$('#formExcluir')[0].reset();
+				alterarAcaoUsuario('excluir');
 				alert("Usuário excluido com sucesso!");
 			}
 		});
