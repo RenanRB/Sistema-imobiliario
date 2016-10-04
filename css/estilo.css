@@ -1287,6 +1287,7 @@ display:block;
 .btn-busca {
 	float:right;
 	width: 100%;
+	margin-top: 15px;
 }
 
 .info-imovel-busca {

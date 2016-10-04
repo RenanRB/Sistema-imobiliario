@@ -25,7 +25,7 @@
                         <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
                         <li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>
                         <li><a href="./cadastro.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a></li>
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
+                        <li><a href="./usuario.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
                         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>
                     </ul>
                 </div>
@@ -84,73 +84,7 @@
                 </div>
                 <div class="user-dashboard">
                     <h1>Buscar imóvel</h1>
-                    <div class="row box-imovel-busca col-md-12">
-						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
-							<center><div class="img-busca col-sm-3 col-xs-12">
-								<img class="img-busca" src="./img/logo.jpg" />
-							</div></center>
-							<div class="info-imovel-busca col-sm-9 col-xs-12">
-								<p>Informações</p>
-								<p>Informações</p>
-								<p>Informações</p>
-							</div>
-						</div>
-						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
-						
-							<button type="button" class="btn-busca">Editar</button>
-							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
-						</div>
-                    </div>
-					<div class="row box-imovel-busca col-md-12">
-						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
-							<div class="img-busca col-sm-3 col-xs-12">
-								<img class="img-busca" src="./img/logo.jpg" />
-							</div>
-							<div class="info-imovel-busca col-sm-9 col-xs-12">
-								<p>Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações Informações Informações 
-								Informações Informações </p>
-							</div>
-						</div>
-						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
-						
-							<button type="button" class="btn-busca">Editar</button>
-							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
-						</div>
-                    </div>
-					<div class="row box-imovel-busca col-md-12">
-						<div class="informacoes-busca col-md-9 col-sm-9 col-xs-12">
-							<div class="img-busca col-sm-3 col-xs-12">
-								<img class="img-busca" src="./img/logo.jpg" />
-							</div>
-							<div class="info-imovel-busca col-sm-9 col-xs-12">
-								<p>Informações</p>
-								<p>Informações</p>
-								<p>Informações</p>
-							</div>
-						</div>
-						<div class="informacoes-busca col-md-3 col-sm-3 col-xs-12">
-						
-							<button type="button" class="btn-busca">Editar</button>
-							<button type="button" class="btn-busca" data-toggle="modal" data-target="#excluir_imovel">Excluir</button>
-						</div>
-                    </div>
+                    <span id="imoveisBusca"></span>
                 </div>
             </div>
         </div>
@@ -196,7 +130,7 @@
 				</div>
                 <div class="modal-footer">
 					<button type="button" class="cancel" data-dismiss="modal">Não</button>
-                    <button type="button" class="add-project" data-dismiss="modal">Sim</button>
+                    <button type="button" class="add-project" data-dismiss="modal" id="confirmarExclusao" >Sim</button>
 				</div>
             </div>
 
@@ -214,6 +148,16 @@
 	   $('[data-toggle="offcanvas"]').click(function(){
 		   $("#navigation").toggleClass("hidden-xs");
 	   });
+	   
+	   $.ajax({
+			url: './servidor/crud.php',
+			data: 'acao=listarImoveis',
+			type: 'get',
+			dataType: 'html',
+			success: function(retorno) {
+				document.getElementById("imoveisBusca").innerHTML = retorno;
+			}
+		});
 	});
 
 	// Load the Visualization API and the corechart package.
@@ -275,6 +219,31 @@
 		minView: 2,
 		forceParse: 0
     });
+	
+	function excluirImovel(idImovel, idUsuario) {
+		$("#confirmarExclusao").attr("onclick","confirmarExclusao(" + idImovel + ", " + idUsuario + ")");
+	}
+	
+	function confirmarExclusao(idImovel, idUsuario) {
+		var dados = {
+			'id_imovel': idImovel,
+			'id_usuario': idUsuario,
+			'acao':'excluirImovel'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'post',
+			success: function() {
+				$( "#imovel" + idImovel + idUsuario ).remove();
+			}
+		});
+	}
+	
+	function editarImovel(idImovel, idUsuario) {
+		window.location = "cadastro.html?acao=editar&id_imovel=" + idImovel + "&id_usuario="+idUsuario;
+	}
   
 </script>
 </body>

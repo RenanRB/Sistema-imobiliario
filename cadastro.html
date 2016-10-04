@@ -30,7 +30,7 @@
 								<li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Apartamento</span></a></li>
 							</ul>
 						</li>
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
+                        <li><a href="./usuario.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
                         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>
                     </ul>
                 </div>
@@ -258,10 +258,21 @@
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
 <script type="text/javascript">
+	var isEdicao = false;
+	var idImovel = null;
+	var idUsuario = null;
 	$(document).ready(function(){
 	   $('[data-toggle="offcanvas"]').click(function(){
 		   $("#navigation").toggleClass("hidden-xs");
 	   });
+	   
+	   var paramUrl = getUrlVars();
+		if (paramUrl['acao'] == 'editar') {
+			isEdicao = true;
+			idImovel = paramUrl['id_imovel'];
+			idUsuario = paramUrl['id_usuario'];
+			editarImovel(paramUrl['id_usuario'], paramUrl['id_imovel']);
+		}
 	});
 	
 	//Adicionar data
@@ -304,7 +315,11 @@
 	function validaBotao() {
 		if (paginaAtual == 4) {
 			$('#btnProximo').html("Finalizar");
-			$("#btnProximo").attr("onclick","cadastrarImovel();");
+			if (isEdicao) {
+				$("#btnProximo").attr("onclick","editarImovelFim();");
+			} else {
+				$("#btnProximo").attr("onclick","cadastrarImovel();");
+			}
 		} else {
 			$('#btnProximo').html("Próximo");
 			$("#btnProximo").attr("onclick","pagProx();");
@@ -342,7 +357,82 @@
 			dataType: 'text',
 			success: function() {
 				$('#formImovel')[0].reset();
-				alert("Imovel cadastrado com sucesso!");
+				alert("Imovel cadastrado com sucesso!"); 
+			}
+		});
+	}
+	
+	function editarImovel(idUsuario, idImovel) {
+		var dados = {
+			'id_usuario': idUsuario,
+			'id_imovel': idImovel,
+			'acao': 'buscaEditarImovel'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'json',
+			success: function(dados) {
+				$("#nome").val(dados.nome);
+				$("#suites").val(dados.suites);
+				$("#quartos").val(dados.quartos);
+				$("#area_privativa").val(dados.area_privativa);
+				$("#area_total").val(dados.area_total);
+				$("#cep").val(dados.cep);
+				$("#estado").val(dados.estado);
+				$("#cidade").val(dados.cidade);
+				$("#bairro").val(dados.bairro);
+				$("#rua").val(dados.rua);
+				$("#numero").val(dados.numero);
+				$("#caracteristicas").val(dados.caracteristicas);
+				$("#informacoes_adicionais").val(dados.informacoes_adicionais);
+			}
+		});
+	}
+	
+	function getUrlVars()
+{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	
+	function editarImovelFimImovel() {
+		var dados = {
+			'nome': $("#nome").val(),
+			'suites': $("#suites").val(),
+			'quartos': $("#quartos").val(),
+			'area_privativa': $("#area_privativa").val(),
+			'area_total': $("#area_total").val(),
+			'cep': $("#cep").val(),
+			'estado': $("#estado").val(),
+			'cidade': $("#cidade").val(),
+			'bairro': $("#bairro").val(),
+			'rua': $("#rua").val(),
+			'numero': $("#numero").val(),
+			'caracteristicas': $("#caracteristicas").val(),
+			'informacoes_adicionais': $("#informacoes_adicionais").val(),
+			'id_usuario': idUsuario,
+			'id_imovel': idImovel,
+			'acao':'editarImovel'
+		};
+		
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				alert("Imovel editado com sucesso!"); 
+				window.location = './busca_registro.html';
 			}
 		});
 	}
