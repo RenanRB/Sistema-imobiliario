@@ -96,6 +96,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 								'quartos' => $_POST['quartos'],
 								'area_privativa' => $_POST['area_privativa'],
 								'area_total' => $_POST['area_total'],
+								'vaga_garagem' => $_POST['vaga_garagem'],
 								'cep' => $_POST['cep'],
 								'estado' => $_POST['estado'],
 								'cidade' => $_POST['cidade'],
@@ -165,17 +166,14 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	$jsonfile = json_decode($getfile, true);
 	
 	$usuarios = $jsonfile['usuarios'];
-	$usuario = $usuarios[$_SESSION['id']];
 	
-	if (!isset($usuario['imoveis'])) {
-		$usuario['imoveis'] = Array();
-	}
-	
-	array_push($usuario['imoveis'], Array('nome' => $_POST['nome'],
+	$usuarios[$_POST['id_usuario']]['imoveis'][$_POST['id_imovel']] = Array(
+								'nome' => $_POST['nome'],
 								'suites' => $_POST['suites'],
 								'quartos' => $_POST['quartos'],
 								'area_privativa' => $_POST['area_privativa'],
 								'area_total' => $_POST['area_total'],
+								'vaga_garagem' => $_POST['vaga_garagem'],
 								'cep' => $_POST['cep'],
 								'estado' => $_POST['estado'],
 								'cidade' => $_POST['cidade'],
@@ -183,9 +181,8 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 								'rua' => $_POST['rua'],
 								'numero' => $_POST['numero'],
 								'caracteristicas' => $_POST['caracteristicas'],
-								'informacoes_adicionais' => $_POST['informacoes_adicionais']));
+								'informacoes_adicionais' => $_POST['informacoes_adicionais']);
 								
-	$usuarios[$_SESSION['id']] = $usuario;
 	$response['usuarios'] = $usuarios;
 	
 	$fp = fopen('../dados/usuarios.json', 'w');

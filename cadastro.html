@@ -339,6 +339,7 @@
 			'quartos': $("#quartos").val(),
 			'area_privativa': $("#area_privativa").val(),
 			'area_total': $("#area_total").val(),
+			'vaga_garagem': $("#vaga_garagem").val(),
 			'cep': $("#cep").val(),
 			'estado': $("#estado").val(),
 			'cidade': $("#cidade").val(),
@@ -380,6 +381,7 @@
 				$("#quartos").val(dados.quartos);
 				$("#area_privativa").val(dados.area_privativa);
 				$("#area_total").val(dados.area_total);
+				$("#vaga_garagem").val(dados.vaga_garagem);
 				$("#cep").val(dados.cep);
 				$("#estado").val(dados.estado);
 				$("#cidade").val(dados.cidade);
@@ -405,13 +407,14 @@
 		return vars;
 	}
 	
-	function editarImovelFimImovel() {
+	function editarImovelFim() {
 		var dados = {
 			'nome': $("#nome").val(),
 			'suites': $("#suites").val(),
 			'quartos': $("#quartos").val(),
 			'area_privativa': $("#area_privativa").val(),
 			'area_total': $("#area_total").val(),
+			'vaga_garagem': $("#vaga_garagem").val(),
 			'cep': $("#cep").val(),
 			'estado': $("#estado").val(),
 			'cidade': $("#cidade").val(),
@@ -432,7 +435,7 @@
 			dataType: 'text',
 			success: function() {
 				alert("Imovel editado com sucesso!"); 
-				window.location = './busca_registro.html';
+				window.location = './busca_registros.html';
 			}
 		});
 	}
