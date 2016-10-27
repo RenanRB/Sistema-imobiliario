@@ -21,6 +21,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	echo json_encode($results);
 
 } elseif (isset($_POST['acao']) && $_POST['acao'] == 'alterar') {
+	
 	if ($_POST['senha'] != ''){
 		$stmt = $pdo->prepare("UPDATE usuarios set nome = ?, email = ?, dt_nascimento = ?, senha = ? WHERE id = ?");
 		$stmt->bindParam(1, $_POST['nome']);
