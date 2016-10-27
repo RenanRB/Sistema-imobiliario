@@ -97,32 +97,32 @@
 						  </div>
 						</div>
                     </div>
-					
+
 					<div class="row row-usuario" id="cadastrar_usuario" style="display:none;">
 						<form class="form-horizontal form-usuario" id="formCadastro">
 							<fieldset>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="nome">Nome</label>  
+							  <label class="col-md-4 control-label" for="nome">Nome</label>
 							  <div class="col-md-4">
 							  <input id="nome_cadastrar" name="nome_cadastrar" type="text" placeholder="Digite seu nome" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="email">E-mail</label>  
+							  <label class="col-md-4 control-label" for="email">E-mail</label>
 							  <div class="col-md-4">
 							  <input id="email_cadastrar" name="email_cadastrar" type="email" placeholder="Digite seu e-mail" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>  
+							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>
 							  <div class="col-md-4">
 							  <input id="dt_nascimento_cadastrar" name="dt_nascimento_cadastrar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
-								
+
 							  </div>
 							</div>
 
@@ -130,7 +130,7 @@
 							  <label class="col-md-4 control-label" for="senha">Senha</label>
 							  <div class="col-md-4">
 								<input id="senha_cadastrar" name="senha_cadastrar" type="password" placeholder="Digite sua senha" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
@@ -138,7 +138,7 @@
 							  <label class="col-md-4 control-label" for="resenha">Confirmar senha</label>
 							  <div class="col-md-4">
 								<input id="resenha_cadastrar" name="resenha_cadastrar" type="password" placeholder="Digite novamente sua senha" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
@@ -149,7 +149,7 @@
 								<button type="button" class="btn btn-success" onclick="salvarRegistro();">Salvar</button>
 							  </div>
 							</div>
-							
+
 							</fieldset>
 						</form>
 
@@ -157,38 +157,38 @@
 					<div class="row row-usuario" id="editar_usuario" style="display:none;" >
 						<form class="form-horizontal form-usuario"  id="formEditar">
 							<fieldset>
-							
+
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="nome">Usuário para edição</label>  
+							  <label class="col-md-4 control-label" for="nome">Usuário para edição</label>
 							  <div class="col-md-4">
 							  <select class="form-control" id="select_editar_usuarios" name="select_editar_usuarios" onchange="buscarDadosUsuario(this.value);">
 								<option>Aguardando dados</option>
 							  </select>
-								
+
 							  </div>
 							</div>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="nome">Nome</label>  
+							  <label class="col-md-4 control-label" for="nome">Nome</label>
 							  <div class="col-md-4">
 							  <input id="nome_editar" name="nome_editar" type="text" placeholder="Digite seu nome" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="email">E-mail</label>  
+							  <label class="col-md-4 control-label" for="email">E-mail</label>
 							  <div class="col-md-4">
 							  <input id="email_editar" name="email_editar" type="email" placeholder="Digite seu e-mail" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>  
+							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>
 							  <div class="col-md-4">
 							  <input id="dt_nascimento_editar" name="dt_nascimento_editar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
-								
+
 							  </div>
 							</div>
 
@@ -196,7 +196,7 @@
 							  <label class="col-md-4 control-label" for="senha">Senha</label>
 							  <div class="col-md-4">
 								<input id="senha_editar" name="senha_editar" type="password" placeholder="Digite sua senha" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
@@ -204,7 +204,7 @@
 							  <label class="col-md-4 control-label" for="resenha">Confirmar senha</label>
 							  <div class="col-md-4">
 								<input id="resenha_editar" name="resenha_editar" type="password" placeholder="Digite novamente sua senha" class="form-control input-md" required="">
-								
+
 							  </div>
 							</div>
 
@@ -215,7 +215,7 @@
 								<button type="button" class="btn btn-success" onclick="salvarEditar();">Salvar</button>
 							  </div>
 							</div>
-							
+
 							</fieldset>
 						</form>
 
@@ -223,14 +223,14 @@
 					<div class="row row-usuario" id="excluir_usuario" style="display:none;" >
 						<form class="form-horizontal form-usuario"  id="formExcluir">
 							<fieldset>
-							
+
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="nome">Usuário para exclusão</label>  
+							  <label class="col-md-4 control-label" for="nome">Usuário para exclusão</label>
 							  <div class="col-md-4">
 							  <select class="form-control" id="select_excluir_usuarios" name="select_excluir_usuarios" onchange="buscarDadosUsuario(this.value);">
 								<option>Aguardando dados</option>
 							  </select>
-								
+
 							  </div>
 							</div>
 
@@ -240,7 +240,7 @@
 								<button type="button" class="btn btn-danger" onclick="excluirUsuario(select_excluir_usuarios.value);">Deletar</button>
 							  </div>
 							</div>
-							
+
 							</fieldset>
 						</form>
 
@@ -284,7 +284,7 @@
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
 <script type="text/javascript">
-	
+
 	//Adicionar data
 	$('#dataAdicionarTarefa').datetimepicker({
 		language: "pt-BR",
@@ -296,14 +296,14 @@
 		minView: 2,
 		forceParse: 0
     });
-	
+
 	function alterarAcaoUsuario(acao) {
 		document.getElementById("cadastrar_usuario").style.display = "none";
 		document.getElementById("editar_usuario").style.display = "none";
 		document.getElementById("excluir_usuario").style.display = "none";
-		
+
 		document.getElementById(acao + "_usuario").style.display = "block";
-		
+
 		if (acao == 'editar' || acao == 'excluir') {
 			$.ajax({
 				url: './servidor/crud.php',
@@ -313,14 +313,14 @@
 				success: function(dados) {
 					var options = "<option>Selecione</option> ";
 					for (var i = 0; i < dados.length; i++) {
-						options += "<option value='" + dados[i].chave + "'>" + dados[i].nome + "</option> ";
+						options += "<option value='" + dados[i].id + "'>" + dados[i].nome + "</option> ";
 					}
 					$("#select_" + acao +"_usuarios").html(options);
 				}
 			});
 		}
 	}
-	
+
 	function buscarDadosUsuario(idUsuario) {
 		$.ajax({
 			url: './servidor/crud.php',
@@ -336,7 +336,7 @@
 			}
 		});
 	}
-	
+
 	function salvarEditar(idUsuario) {
 		var dados = {
 			'id': $("#select_editar_usuarios").val(),
@@ -346,7 +346,7 @@
 			'senha': $("#senha_editar").val(),
 			'acao':'alterar'
 		};
-		
+
 		$.ajax({
 			url: './servidor/crud.php',
 			data: dados,
@@ -359,7 +359,7 @@
 			}
 		});
 	}
-	
+
 	function excluirUsuario(idUsuario) {
 		$.ajax({
 			url: './servidor/crud.php',
@@ -373,7 +373,7 @@
 			}
 		});
 	}
-	
+
 	function salvarRegistro() {
 		var dados = {
 			'nome': $("#nome_cadastrar").val(),
@@ -382,7 +382,7 @@
 			'senha': $("#senha_cadastrar").val(),
 			'acao':'cadastrar'
 		};
-		
+
 		$.ajax({
 			url: './servidor/crud.php',
 			data: dados,
@@ -394,7 +394,7 @@
 			}
 		});
 	}
-  
+
 </script>
 </body>
 </html>
