@@ -116,7 +116,7 @@
 
         </div>
     </div>
-	
+
 	<!-- Modal -->
     <div id="excluir_imovel" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -148,7 +148,7 @@
 	   $('[data-toggle="offcanvas"]').click(function(){
 		   $("#navigation").toggleClass("hidden-xs");
 	   });
-	   
+
 	   $.ajax({
 			url: './servidor/crud.php',
 			data: 'acao=listarImoveis',
@@ -187,7 +187,7 @@
 
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-		chart.draw(data, options); 
+		chart.draw(data, options);
 
 		var data = google.visualization.arrayToDataTable([
 			['Mês', 'Total'],
@@ -207,7 +207,7 @@
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_plain'));
 		chart.draw(data, options);
 	}
-	
+
 	//Adicionar data
 	$('#dataAdicionarTarefa').datetimepicker({
 		language: "pt-BR",
@@ -219,32 +219,31 @@
 		minView: 2,
 		forceParse: 0
     });
-	
-	function excluirImovel(idImovel, idUsuario) {
-		$("#confirmarExclusao").attr("onclick","confirmarExclusao(" + idImovel + ", " + idUsuario + ")");
+
+	function excluirImovel(idImovel) {
+		$("#confirmarExclusao").attr("onclick","confirmarExclusao(" + idImovel + ")");
 	}
-	
-	function confirmarExclusao(idImovel, idUsuario) {
+
+	function confirmarExclusao(idImovel) {
 		var dados = {
 			'id_imovel': idImovel,
-			'id_usuario': idUsuario,
 			'acao':'excluirImovel'
 		};
-		
+
 		$.ajax({
 			url: './servidor/crud.php',
 			data: dados,
 			type: 'post',
 			success: function() {
-				$( "#imovel" + idImovel + idUsuario ).remove();
+				$( "#imovel" + idImovel ).remove();
 			}
 		});
 	}
-	
-	function editarImovel(idImovel, idUsuario) {
-		window.location = "cadastro.html?acao=editar&id_imovel=" + idImovel + "&id_usuario="+idUsuario;
+
+	function editarImovel(idImovel) {
+		window.location = "cadastro.html?acao=editar&id_imovel=" + idImovel;
 	}
-  
+
 </script>
 </body>
 </html>
