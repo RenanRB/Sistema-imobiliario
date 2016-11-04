@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=UTF-8",true);
-require_once("autenticador.php");
-
+//require_once("autenticador.php");
+session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=sistema_imobiliario', 'root', '');
 $pdo->exec("set names utf8");
 
@@ -63,8 +63,6 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	if($stmt->execute()){
 		if($stmt->rowCount() > 0){
 			$result = $stmt->fetch(PDO::FETCH_OBJ);
-
-			session_start();
 
 			$_SESSION['id'] = $result->id;
 			$_SESSION['nome'] = $result->nome;
@@ -159,7 +157,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	echo json_encode($results);
 
 } elseif (isset($_POST['acao']) && $_POST['acao'] == 'editarImovel') {
-	
+
 	$stmt = $pdo->prepare("select * from enderecos where cep = :cep");
 	$stmt->bindValue(':cep', $_POST['cep']);
 	$run = $stmt->execute();
@@ -204,6 +202,14 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 	$stmt->bindParam(10, $idEndereco);
 	$stmt->bindParam(11, $_POST['id_imovel']);
 	$run = $stmt->execute();
+
+} elseif (isset($_POST['acao']) && $_POST['acao'] == 'perfil') {
+
+	$dados = Array();
+	if (isset($_SESSION['nome']) && isset($_SESSION['email'])) {
+		array_push($dados, $_SESSION['nome'], $_SESSION['email']);
+	}
+	echo json_encode($dados);
 
 }
 ?>

@@ -15,18 +15,18 @@
         <div class="row display-table-row">
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="logo">
-                    <a hef="home.html"><img src="./img/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <a href="home.html"><img src="./img/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
                         <img src="./img/circulo-logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                     </a>
                 </div>
                 <div class="navi">
-                    <ul>
+                  <ul>
                         <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="busca.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
-                        <li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>
+                        <li><a href="busca_registros.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
+                        <!--<li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>-->
                         <li><a href="./cadastro.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a></li>
                         <li class="active"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>
+                        <!--<li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>-->
                     </ul>
                 </div>
             </div>
@@ -46,33 +46,33 @@
                                 </div>
                             </nav>
                             <div class="search hidden-xs hidden-sm">
-                                <input type="text" placeholder="Buscar" id="search">
+                                <!--<input type="text" placeholder="Buscar" id="search">-->
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
-                                    <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_tarefa">Adicionar Tarefa</a></li>
+                                    <!--<li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_tarefa">Adicionar Tarefa</a></li>
                                     <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                     <li>
                                         <a href="#" class="icon-info">
                                             <i class="fa fa-bell" aria-hidden="true"></i>
                                             <span class="label label-primary">3</span>
                                         </a>
-                                    </li>
+                                    </li>-->
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="./img/perfil.jpg" alt="user">
                                             <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <div class="navbar-content">
-                                                    <span>Renan Rafael Bertoldo</span>
-                                                    <p class="text-muted small">
-                                                        renan8r@gmail.com
+                                                    <span id="nome_perfil">Carregando</span>
+                                                    <p class="text-muted small" id="email_perfil">
+                                                        carregando
                                                     </p>
                                                     <div class="divider">
                                                     </div>
-                                                    <a href="./profile.html" class="view btn-sm active">Ver Perfil</a>
+                                                    <a href="./servidor/sair.php" class="view btn-sm active">Sair</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -121,7 +121,7 @@
 							<div class="form-group">
 							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>
 							  <div class="col-md-4">
-							  <input id="dt_nascimento_cadastrar" name="dt_nascimento_cadastrar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
+							  <input id="dt_nascimento_cadastrar" name="dt_nascimento_cadastrar" type="text" placeholder="dd/mm/aaaa" class="form-control input-md">
 
 							  </div>
 							</div>
@@ -187,7 +187,7 @@
 							<div class="form-group">
 							  <label class="col-md-4 control-label" for="dt_nascimento">Data Nascimento</label>
 							  <div class="col-md-4">
-							  <input id="dt_nascimento_editar" name="dt_nascimento_editar" type="text" placeholder="Digite a data de seu nascimento" class="form-control input-md">
+							  <input id="dt_nascimento_editar" name="dt_nascimento_editar" type="text" placeholder="dd/mm/aaaa" class="form-control input-md">
 
 							  </div>
 							</div>
@@ -285,8 +285,46 @@
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
 <script type="text/javascript">
 
+    $(document).ready(function(){
+
+       $.ajax({
+           url: './servidor/crud.php',
+               data: 'acao=perfil',
+               type: 'post',
+               dataType: 'json',
+           success: function(dados) {
+               if (dados.length == 0) {
+                   window.location = "./index.html";
+               }
+               $("#nome_perfil").html(dados[0]);
+               $("#email_perfil").html(dados[1]);
+           }
+       });
+	});
 	//Adicionar data
 	$('#dataAdicionarTarefa').datetimepicker({
+		language: "pt-BR",
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+
+    $('#dt_nascimento_cadastrar').datetimepicker({
+		language: "pt-BR",
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+
+    $('#dt_nascimento_editar').datetimepicker({
 		language: "pt-BR",
 		weekStart: 1,
         todayBtn:  1,
