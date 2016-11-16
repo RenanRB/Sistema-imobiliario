@@ -13,17 +13,14 @@
 	$servidor->configureWSDL('urn:Servidor');
 	$servidor->wsdl->schemaTargetNamespace = 'urn:Servidor';
 
-
-	function exemplo($nome, $idade){
-		$dados = Array($nome, $idade);
-		return json_encode($dados);
+	function alterarSenha($email){
+		return($email);
 	}
 
 
 	$servidor->register(
-		'exemplo',
-		array('nome'=>'xsd:string',
-				'idade'=>'xsd:int'),
+		'alterarSenha',
+		array('nome'=>'xsd:string'),
 		array('retorno'=>'xsd:string'),
 		'urn:Servidor.exemplo',
 		'urn:Servidor.exmeplo',

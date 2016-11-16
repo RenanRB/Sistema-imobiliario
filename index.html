@@ -25,7 +25,7 @@
                     </div>
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" onclick="login();">Login</button>
                 </form>
-                <a href="#" class="forgot-password">
+                <a href="javascript:" onclick="alterarSenha();" class="forgot-password">
                     Esqueceu sua senha?
                 </a>
             </div>
@@ -88,14 +88,14 @@
                     }
                 }
             }
-			
+
 			function login() {
 				var dados = {
 					'email': $("#email").val(),
 					'senha': $("#senha").val(),
 					'acao':'login'
 				};
-				
+
 				$.ajax({
 					url: './servidor/crud.php',
 					data: dados,
@@ -112,6 +112,11 @@
 					}
 				});
 			}
+
+            function alterarSenha() {
+                var email = window.prompt("Digite seu email");
+                window.location = "./alterar_senha.php?email="+email;
+            }
         </script>
     </body>
 </html>
