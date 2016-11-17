@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2016 at 12:36 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- Generation Time: 17-Nov-2016 às 02:53
+-- Versão do servidor: 10.1.10-MariaDB
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `enderecos`
+-- Estrutura da tabela `alterar_senha`
+--
+
+CREATE TABLE `alterar_senha` (
+  `id` int(11) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `alterar_senha`
+--
+
+INSERT INTO `alterar_senha` (`id`, `email`, `link`, `data`) VALUES
+(1, 'renan10r_@hotmail.com', 'dd789b10eda1458af1ab668d11c1a8ad', '2016-11-16'),
+(2, 'renan10r_@hotmail.com', 'e83bd0813ebeb4344f5c38669f43a306', '2016-11-16'),
+(3, 'renan10r_@hotmail.com', '9b9e8b84afa3f8dba08857954a99dbcd', '2016-11-16'),
+(4, 'renan10r_@hotmail.com', '53828f749f7b88f36790f93dc9249708', '2016-11-16'),
+(5, 'renan10r_@hotmail.com', 'cff14598ad58a494f00b8d777438c099', '2016-11-16'),
+(6, 'renan10r_@hotmail.com', '828588e75a217a57510ec8807aad40ae', '2016-11-16'),
+(7, 'renan10r_@hotmail.com', '65e0cbc5344587bf74b8e6d01430ce35', '2016-11-16');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `enderecos`
 --
 
 CREATE TABLE `enderecos` (
@@ -36,7 +62,7 @@ CREATE TABLE `enderecos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `enderecos`
+-- Extraindo dados da tabela `enderecos`
 --
 
 INSERT INTO `enderecos` (`id`, `cep`, `estado`, `cidade`, `bairro`, `rua`) VALUES
@@ -46,7 +72,7 @@ INSERT INTO `enderecos` (`id`, `cep`, `estado`, `cidade`, `bairro`, `rua`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imoveis`
+-- Estrutura da tabela `imoveis`
 --
 
 CREATE TABLE `imoveis` (
@@ -65,7 +91,7 @@ CREATE TABLE `imoveis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `imoveis`
+-- Extraindo dados da tabela `imoveis`
 --
 
 INSERT INTO `imoveis` (`id`, `nome`, `suites`, `quartos`, `area_privativa`, `area_total`, `vaga_garagem`, `numero`, `caracteristicas`, `informacoes_adicionais`, `id_endereco`, `id_usuario`) VALUES
@@ -77,7 +103,7 @@ INSERT INTO `imoveis` (`id`, `nome`, `suites`, `quartos`, `area_privativa`, `are
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -91,16 +117,23 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `dt_nascimento`, `senha`, `ativo`, `nivel`) VALUES
-(2, 'Renan1', 'renan10r_@hotmail.com', '1993-12-10', '6116afedcb0bc31083935c1c262ff4c9', 1, 0),
+(2, 'Renan1', 'renan10r_@hotmail.com', '1993-12-10', '700c8b805a3e2a265b01c77614cd8b21', 1, 0),
 (3, 'Usuario 2', 'teste@teste.com', '1995-12-10', '6116afedcb0bc31083935c1c262ff4c9', 1, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `alterar_senha`
+--
+ALTER TABLE `alterar_senha`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `link` (`link`);
 
 --
 -- Indexes for table `enderecos`
@@ -127,6 +160,11 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `alterar_senha`
+--
+ALTER TABLE `alterar_senha`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `enderecos`
 --
 ALTER TABLE `enderecos`
@@ -146,7 +184,7 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Constraints for table `imoveis`
+-- Limitadores para a tabela `imoveis`
 --
 ALTER TABLE `imoveis`
   ADD CONSTRAINT `id_enderecos_imoveis` FOREIGN KEY (`id_endereco`) REFERENCES `enderecos` (`id`),
